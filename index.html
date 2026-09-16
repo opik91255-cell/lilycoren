@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lilycoren - Modern Movie Streaming</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Style External -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- ========================================== -->
+    <!-- 1. ADSTERRA POPUNDER / SOCIAL BAR SCRIPT   -->
+    <!-- (Tempelkan script utama Adsterra di sini)  -->
+    <!-- ========================================== -->
+    <!-- Contoh: <script type='text/javascript' src='//pl12345678.highcpmgate.com/xx/xx/xx/xxxx.js'></script> -->
+
+</head>
+<body class="antialiased min-h-screen flex flex-col bg-[#0B0F17]">
+
+    <!-- Cinema Mode Overlay -->
+    <div id="cinema-overlay" class="fixed inset-0 bg-black/95 z-50 hidden pointer-events-none transition-opacity"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="fixed w-full top-0 z-40 bg-[#0B0F17]/80 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center cursor-pointer" onclick="switchPage('home')">
+                    <span class="text-2xl font-bold text-[#F8FAFC] tracking-tight">Lily<span class="text-[#6C5CE7]">coren</span></span>
+                </div>
+                
+                <!-- Navigation Items -->
+                <div class="hidden md:flex space-x-8">
+                    <button id="nav-home" onclick="switchPage('home')" class="nav-btn text-[#6C5CE7] font-semibold text-sm transition-colors hover:text-[#6C5CE7]">Home</button>
+                    <button id="nav-movies" onclick="resetMovieFilter(); switchPage('movies');" class="nav-btn text-[#94A3B8] hover:text-[#F8FAFC] text-sm transition-colors">Movies</button>
+                    <button id="nav-genres" onclick="switchPage('genres')" class="nav-btn text-[#94A3B8] hover:text-[#F8FAFC] text-sm transition-colors">Genres</button>
+                </div>
+
+                <!-- Search Input -->
+                <div class="relative w-48 sm:w-64">
+                    <input type="text" oninput="handleSearch(this.value)" placeholder="Search movies..." class="w-full bg-[#161F30] text-sm text-[#F8FAFC] rounded-full pl-4 pr-10 py-1.5 focus:outline-none focus:ring-1 focus:ring-[#6C5CE7] border border-slate-700/40">
+                    <svg class="w-4 h-4 text-[#94A3B8] absolute right-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="pt-16 flex-grow">
+        
+        <!-- ================= HOME SECTION ================= -->
+        <div id="page-home" class="page-section">
+            <!-- Hero Banner -->
+            <div class="relative h-[65vh] w-full bg-[#161F30] flex items-end overflow-hidden">
+                <div class="absolute inset-0">
+                    <img id="hero-bg" src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1925&q=80" alt="Hero" class="w-full h-full object-cover opacity-30 transition-opacity duration-500 ease-in-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#0B0F17] via-[#0B0F17]/40 to-transparent"></div>
+                </div>
+                <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 w-full">
+                    <div class="flex gap-2 mb-3">
+                        <span class="bg-indigo-600 text-white text-xs font-bold px-2 py-0.5 rounded">Featured</span>
+                        <span id="hero-genre" class="bg-[#161F30] border border-slate-700 text-[#F8FAFC] text-xs px-2 py-0.5 rounded">Sci-Fi</span>
+                    </div>
+                    <h1 id="hero-title" class="text-4xl md:text-5xl font-bold text-[#F8FAFC] mb-3">Interstellar Awakening</h1>
+                    <p id="hero-desc" class="text-[#94A3B8] max-w-2xl text-sm md:text-base mb-6">Petualangan epik melintasi luar angkasa demi menemukan planet baru bagi keberlangsungan hidup manusia.</p>
+                    <button id="hero-btn" onclick="openPlayer(1)" class="bg-[#6C5CE7] hover:bg-indigo-500 text-white font-semibold py-2.5 px-6 rounded-xl transition-all flex items-center gap-2 shadow-lg shadow-[#6C5CE7]/30">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z"></path></svg>
+                        Watch Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Slot Iklan Adsterra Banner (Atas Trending) -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 flex justify-center">
+                <!-- Tempelkan script banner Adsterra 728x90 atau Native Banner di sini -->
+            </div>
+            
+            <!-- Trending Row -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <h2 class="text-xl font-semibold mb-6 flex items-center gap-2 text-[#F8FAFC]">
+                    <div class="w-1 h-5 bg-[#6C5CE7] rounded-full"></div> Trending This Week
+                </h2>
+                <div id="home-trending-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6"></div>
+            </div>
+        </div>
+
+        <!-- ================= MOVIES SECTION ================= -->
+        <div id="page-movies" class="page-section hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div class="flex justify-between items-center mb-8">
+                    <div>
+                        <h1 id="movies-title" class="text-3xl font-bold text-[#F8FAFC] mb-1">All Movies</h1>
+                        <p class="text-[#94A3B8] text-sm">Koleksi film berkualitas tinggi siap tonton.</p>
+                    </div>
+                    <button onclick="resetMovieFilter()" class="text-xs bg-[#161F30] hover:bg-slate-700 text-[#94A3B8] px-3 py-1.5 rounded-lg border border-slate-700">Reset Filter</button>
+                </div>
+                <div id="all-movies-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6"></div>
+            </div>
+        </div>
+
+        <!-- ================= GENRES SECTION ================= -->
+        <div id="page-genres" class="page-section hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <h1 class="text-3xl font-bold text-[#F8FAFC] mb-2">Explore Genres</h1>
+                <p class="text-[#94A3B8] text-sm mb-8">Pilih kategori favorit Anda untuk memfilter katalog.</p>
+                <div id="genre-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"></div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Video Player Modal -->
+    <div id="video-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="bg-[#161F30] w-full max-w-4xl rounded-2xl overflow-hidden border border-slate-700/50 shadow-2xl relative flex flex-col z-50">
+            <!-- Modal Header -->
+            <div class="p-4 border-b border-slate-800 flex justify-between items-center">
+                <div>
+                    <h3 id="player-title" class="text-lg font-bold text-[#F8FAFC]">Title</h3>
+                    <p id="player-meta" class="text-xs text-[#94A3B8]">Meta info</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button onclick="toggleLights()" class="bg-slate-800 hover:bg-slate-700 text-xs text-[#F8FAFC] px-3 py-1.5 rounded-lg border border-slate-700">💡 Turn Off Lights</button>
+                    <button onclick="closePlayer()" class="text-[#94A3B8] hover:text-white p-1 text-xl font-bold">&times;</button>
+                </div>
+            </div>
+            
+            <!-- Video Player -->
+            <div class="aspect-video w-full bg-black relative">
+                <!-- IFRAME DENGAN SANDBOX UNTUK MEMBLOKIR POPUP IKLAN ABYSS -->
+                <!-- Cari iframe kamu di index.html lalu ubah nilai sandbox-nya menjadi seperti ini: -->
+                <iframe 
+                    id="video-frame" 
+                    class="w-full h-full" 
+                    src="" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-4">
+                <p id="player-synopsis" class="text-sm text-[#94A3B8]">Sinopsis...</p>
+
+                <!-- Slot Iklan Adsterra Di Dalam Modal Player -->
+                <div class="my-3 flex justify-center">
+                    <!-- Tempelkan script Native Banner / Banner Adsterra kecil di sini jika mau -->
+                </div>
+
+                <!-- Container Tombol Episode -->
+                <div id="episode-container" class="hidden border-t border-slate-800 pt-3 mt-4">
+                    <h4 class="text-xs font-semibold text-[#F8FAFC] uppercase tracking-wider mb-2">Pilih Episode / Server:</h4>
+                    <div id="episode-list" class="flex flex-wrap gap-2 max-h-32 overflow-y-auto"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#161F30] border-t border-slate-800/60 mt-auto py-6">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-xl font-bold text-[#F8FAFC] mb-1">Lily<span class="text-[#6C5CE7]">coren</span></p>
+            <p class="text-[#94A3B8] text-xs">© 2026 Lilycoren Streaming. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Script External -->
+    <script src="script.js"></script>
+</body>
+</html>

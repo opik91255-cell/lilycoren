@@ -1,0 +1,51 @@
+/* Custom Scrollbar */
+body {
+    background-color: #0B0F17;
+    color: #F8FAFC;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0B0F17;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #161F30;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #6C5CE7;
+}
+
+/* Glassmorphism Navigation */
+.glass-nav {
+    background: rgba(11, 15, 23, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(22, 31, 48, 0.8);
+}
+
+/* Movie Card Animation */
+.movie-card {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+}
+
+.movie-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 12px 24px -10px rgba(108, 92, 231, 0.3);
+}
+
+/* Cinema Mode (Turn Off Lights) Overlay */
+#cinema-overlay {
+    transition: opacity 0.3s ease;
+}
+
+#cinema-overlay.active {
+    opacity: 0.95;
+    pointer-events: auto;
+}
