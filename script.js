@@ -144,7 +144,7 @@ const moviesData = [
         rating: 8.6,
         image: "image/doraemon-the-movie-nobitas-sky-utopia.jpeg",
         benner: "image/Doraemon Movie Sky Utopia.jpg",
-        synopsis: "Prajurit muda menemukan pedang kuno yang membawanya bertarung melawan naga raksasa.",
+        synopsis: "Film ini mengikuti Nobita, Doraemon, dan teman-temannya saat mereka menemukan Paradapia—sebuah utopia langit yang tampaknya sempurna tapi sebenarnya fasilitas pencucian otak yang dibuat oleh Dr. Ray—yang membawa mereka ke pertempuran untuk menghentikan rencananya dan menyelamatkan teman-teman mereka serta dunia.",
         videoUrl: "https://www.youtube.com/embed/zSWdZVtXT7E"
     },
 ];
