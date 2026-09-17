@@ -63,7 +63,7 @@ const moviesData = [
         year: 2024,
         rating: 8.9,
         image: "https://www.commonsensemedia.org/sites/default/files/styles/ratio_2_3_xlarge/public/product-images/csm-movie/drawingclosermovieposter.jpg",
-        banner: "image/drawing closer.png",
+        banner: "image/drawingcloser.jpg",
         synopsis: "Drawing Closer adalah drama romantis Jepang yang menyentuh hati, yang mengeksplorasi hubungan emosional yang dalam antara dua remaja yang sakit parah, Akito dan Haruna, saat mereka menjalani cinta dan kehidupan di tengah ancaman kematian yang akan datang.",
         videoUrl: "https://player.abyssplayer.com/-F0-R42as"
     },
@@ -75,6 +75,7 @@ const moviesData = [
         year: 1997,
         rating: 8.4,
         image: "https://m.media-amazon.com/images/M/MV5BMzAwNDIzMzEtZDZkNC00ZDQ4LTk3ZDMtZjVhMTU2YzgzZTZiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+        benner: "image/Perfect Blue_ A Genre Study.jpe",
         synopsis: "Misteri hilangnya seorang anak di kota kecil yang membuka rahasia eksperimen supranatural.",
         videoUrl: "https://player.abyssplayer.com/pYqGFXB31"
     
@@ -87,7 +88,7 @@ const moviesData = [
         year: 2025,
         rating: 8.2,
         image: "https://image.tmdb.org/t/p/original/4CASjp89BWRchiAybQKoPesvHK7.jpg",
-        videoUrl: "https://www.youtube.com/embed/zSWdZVtXT7E"
+        videoUrl: "https://player.abyssplayer.com/sAbdF_ntP"
     },
     {
         id: 7,
@@ -98,78 +99,41 @@ const moviesData = [
         rating: 7.8,
         image: "image/doraemon-nobitas-earth-symphony.jpg",
         synopsis: "Kisah konyol sekelompok sahabat yang terjebak dalam liburan penuh kekacauan di Bali.",
-        videoUrl: "https://www.youtube.com/embed/zSWdZVtXT7E"
+        videoUrl: "https://player.abyssplayer.com/7FQ_vU0Po"
     },
     {
         id: 8,
-        title: "Love in Sunset",
-        genre: "Romance",
+        title: "Inside Out 2",
+        genre: "animation",
         type: "movie",
         year: 2024,
         rating: 8.4,
-        image: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=600&q=80",
+        image: "https://image.tmdb.org/t/p/original/oxxqiyWrnM0XPnBtVe9TgYWnPxT.jpg",
         synopsis: "Kisah cinta manis dua sejoli yang dipertemukan kembali setelah 10 tahun berpisah.",
-        videoUrl: "https://www.youtube.com/embed/zSWdZVtXT7E"
+        videoUrl: "https://player.abyssplayer.com/1N3HBlHj9"
     },
     {
         id: 9,
-        title: "Shadow Detective",
-        genre: "Thriller",
-        type: "series",
-        year: 2023,
+        title: "Spider-Man: No Way Home",
+        genre: "action",
+        type: "movie",
+        year: 2021,
         rating: 8.7,
-        image: "https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?auto=format&fit=crop&w=600&q=80",
+        image: "https://static1.tribute.ca/poster/660x980/spider-man-no-way-home-163783.jpg",
         synopsis: "Detektif veteran dijebak dalam sebuah kasus pembunuhan yang melibatkan petinggi polisi.",
-        episodes: [
-            { episode: 1, title: "Episode 1", url: "https://www.youtube.com/embed/zSWdZVtXT7E" },
-            { episode: 2, title: "Episode 2", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" }
-        ]
+        videoUrl: ""
     },
     {
         id: 10,
-        title: "Realm of Magic",
-        genre: "Fantasy",
+        title: "Doraemon Movie Sky Utopia",
+        genre: "animation",
         type: "movie",
         year: 2025,
         rating: 8.6,
-        image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80",
+        image: "image/doraemon-the-movie-nobitas-sky-utopia.jpeg",
         synopsis: "Prajurit muda menemukan pedang kuno yang membawanya bertarung melawan naga raksasa.",
         videoUrl: "https://www.youtube.com/embed/zSWdZVtXT7E"
     },
-    {
-        id: 11,
-        title: "Spirit World Journey",
-        genre: "Animation",
-        type: "movie",
-        year: 2024,
-        rating: 9.1,
-        image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80",
-        videoUrl: "https://www.youtube.com/embed/zSWdZVtXT7E"
-    },
-    {
-        id: 12,
-        title: "The Heist Mastermind",
-        genre: "Crime",
-        type: "movie",
-        year: 2024,
-        rating: 8.3,
-        image: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
-        synopsis: "Rencana perampokan bank terbesar sepanjang sejarah yang didesain secara sempurna.",
-        videoUrl: "https://www.youtube.com/embed/zSWdZVtXT7E"
-    },
-    {
-        id: 13,
-        title: "Unsolved Files",
-        genre: "Mystery",
-        type: "series",
-        year: 2023,
-        rating: 8.6,
-        image: "https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?auto=format&fit=crop&w=600&q=80",
-        episodes: [
-            { episode: 1, title: "Episode 1", url: "https://www.youtube.com/embed/zSWdZVtXT7E" },
-            { episode: 2, title: "Episode 2", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" }
-        ]
-    }
 ];
 
 // ==========================================
@@ -239,7 +203,7 @@ function createMovieCard(item) {
 
 // Update Hero Banner
 function updateHeroBanner(index) {
-    const featuredMovies = moviesData.slice(0, 4); 
+    const featuredMovies = moviesData.slice(0, 5); 
     const movie = featuredMovies[index];
     if (!movie) return;
 
@@ -270,7 +234,7 @@ function startHeroAutoSlide() {
     if (heroTimer) clearInterval(heroTimer);
 
     heroTimer = setInterval(() => {
-        const featuredMovies = moviesData.slice(0, 4);
+        const featuredMovies = moviesData.slice(0, 5);
         currentHeroIndex = (currentHeroIndex + 1) % featuredMovies.length;
         updateHeroBanner(currentHeroIndex);
     }, 5000);
