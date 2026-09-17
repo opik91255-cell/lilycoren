@@ -87,18 +87,19 @@ const moviesData = [
         rating: 8.4,
         image: "https://m.media-amazon.com/images/M/MV5BMzAwNDIzMzEtZDZkNC00ZDQ4LTk3ZDMtZjVhMTU2YzgzZTZiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
         benner: "image/Perfect Blue_ A Genre Study.jpe",
-        synopsis: "Misteri hilangnya seorang anak di kota kecil yang membuka rahasia eksperimen supranatural.",
+        synopsis: "Perfect Blue mengikuti kisah Mima Kirigoe, seorang idola pop yang beralih jadi aktris, saat dia berjuang membedakan kenyataan dan ilusi sambil dikejar dan dibayangi oleh masa lalunya.",
         videoUrl: "https://player.abyssplayer.com/pYqGFXB31"
     
     },
     {
         id: 6,
-        title: "chainsaw man the movie reze arc",
+        title: "Chainsaw Man: The Movie - Reze Arc",
         genre: "action",
         type: "movie",
         year: 2025,
         rating: 8.2,
         image: "https://image.tmdb.org/t/p/original/4CASjp89BWRchiAybQKoPesvHK7.jpg",
+        synopsis: "Arc Reze mengikuti kisah romantis tragis Denji dengan Reze, seorang hibrida Iblis Bom, yang memuncak dalam pertarungan brutal yang menguji cinta, kepercayaan, dan bertahan hidup.",
         videoUrl: "https://player.abyssplayer.com/sAbdF_ntP"
     },
     {
@@ -109,7 +110,7 @@ const moviesData = [
         year: 2024,
         rating: 7.8,
         image: "image/doraemon-nobitas-earth-symphony.jpg",
-        synopsis: "Kisah konyol sekelompok sahabat yang terjebak dalam liburan penuh kekacauan di Bali.",
+        synopsis: "Doraemon The Movie: Nobita’s Earth Symphony mengisahkan Nobita dan kawan‑kawan yang terseret dalam petualangan musikal bersama gadis misterius bernama Mikka untuk menyelamatkan dunia dari ancaman makhluk penghapus musik.",
         videoUrl: "https://player.abyssplayer.com/7FQ_vU0Po"
     },
     {
@@ -120,7 +121,7 @@ const moviesData = [
         year: 2024,
         rating: 8.4,
         image: "https://image.tmdb.org/t/p/original/oxxqiyWrnM0XPnBtVe9TgYWnPxT.jpg",
-        synopsis: "Kisah cinta manis dua sejoli yang dipertemukan kembali setelah 10 tahun berpisah.",
+        synopsis: "Inside Out 2 mengikuti Riley yang memasuki masa remaja dan harus menghadapi munculnya emosi-emosi baru yang mengguncang keseimbangan emosinya.",
         videoUrl: "https://player.abyssplayer.com/1N3HBlHj9"
     },
     {
@@ -131,7 +132,7 @@ const moviesData = [
         year: 2021,
         rating: 8.7,
         image: "https://static1.tribute.ca/poster/660x980/spider-man-no-way-home-163783.jpg",
-        synopsis: "Sinopsis resmi menyatakan bahwa identitas Peter Parker terungkap, membuatnya harus mencari bantuan Doctor Strange—namun mantra itu justru merobek Multiverse dan melepaskan penjahat kuat dari setiap dunia Spider-Man.",
+        synopsis: "Spider-Man: No Way Home mengikuti perjuangan Peter Parker setelah identitasnya terbongkar, memicu kekacauan yang membuka multiverse dan mempertemukannya dengan para musuh serta dua Spider-Man dari semesta lain.",
         videoUrl: ""
     },
     {
