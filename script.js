@@ -34,20 +34,31 @@ const moviesData = [
             { episode: 1, title: "Trailer", url: "https://www.youtube.com/embed/tqVVrTvrI8U" },
             { episode: 2, title: "Episode 1", url: "https://player.abyssplayer.com/X8EIsBeUB" },
             { episode: 3, title: "Episode 2", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
-            { episode: 4, title: "Episode 3", url: "https://www.youtube.com/embed/zSWdZVtXT7E" },
-            { episode: 5, title: "Episode 4", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" }
+            { episode: 4, title: "Episode 3", url: "https://player.abyssplayer.com/guBkZRlRt" },
+            { episode: 5, title: "Episode 4", url: "https://player.abyssplayer.com/H6IUMOGgO" },
+            { episode: 6, title: "Episode 6", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+            { episode: 7, title: "Episode 7", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+            { episode: 8, title: "Episode 8", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+            { episode: 9, title: "Episode 9", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+            { episode: 10, title: "Episode 10", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+            { episode: 11, title: "Episode 11", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+            { episode: 12, title: "Episode 12", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+            { episode: 13, title: "Episode 13", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+            { episode: 14, title: "Episode 14", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+            { episode: 15, title: "Episode 15", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+            { episode: 16, title: "Episode 16", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
         ]
     },
     {
         id: 3,
         title: "The Defects S1",
-        genre: "Action",
+        genre: "thriller",
         type: "series",
         year: 2025,
         rating: 8.5,
         image: "https://image.tmdb.org/t/p/original/xKxKRYXZqarVzfSdDFlVINoqONT.jpg",
         banner: "image/the defects.avif",
-        synopsis: "Perang teknologi canggih di kota neon masa depan.",
+        synopsis: "The Defects adalah thriller bertahan hidup yang gelap tentang anak-anak yang ditinggalkan oleh orang tua angkat mereka, yang berjuang untuk bertahan hidup dan membalas dendam terhadap organisasi adopsi ilegal yang rahasia.",
        episodes: [
             { episode: 1, title: "Episode 1", url: "" },
             { episode: 2, title: "Episode 2", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
@@ -120,7 +131,7 @@ const moviesData = [
         year: 2021,
         rating: 8.7,
         image: "https://static1.tribute.ca/poster/660x980/spider-man-no-way-home-163783.jpg",
-        synopsis: "Detektif veteran dijebak dalam sebuah kasus pembunuhan yang melibatkan petinggi polisi.",
+        synopsis: "Sinopsis resmi menyatakan bahwa identitas Peter Parker terungkap, membuatnya harus mencari bantuan Doctor Strange—namun mantra itu justru merobek Multiverse dan melepaskan penjahat kuat dari setiap dunia Spider-Man.",
         videoUrl: ""
     },
     {
@@ -131,6 +142,7 @@ const moviesData = [
         year: 2025,
         rating: 8.6,
         image: "image/doraemon-the-movie-nobitas-sky-utopia.jpeg",
+        benner: "image/Doraemon Movie Sky Utopia.jpg",
         synopsis: "Prajurit muda menemukan pedang kuno yang membawanya bertarung melawan naga raksasa.",
         videoUrl: "https://www.youtube.com/embed/zSWdZVtXT7E"
     },
@@ -159,11 +171,19 @@ let currentHeroIndex = 0;
 let heroTimer = null;
 
 // ==========================================
+// HELPER: URUTKAN FILM BERDASARKAN RATING
+// ==========================================
+function getSortedMovies() {
+    // Meng-copy moviesData lalu mengurutkannya dari rating terbesar ke terkecil
+    return [...moviesData].sort((a, b) => b.rating - a.rating);
+}
+
+// ==========================================
 // INITIALIZATION
 // ==========================================
 document.addEventListener("DOMContentLoaded", () => {
     renderHomeTrending();
-    renderAllMovies(moviesData);
+    renderAllMovies(getSortedMovies()); // Ditampilkan terurut rating
     renderGenres();
     
     // Inisialisasi Hero Banner
@@ -175,7 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // RENDER FUNCTIONS
 // ==========================================
 
-// 1. Render Card Film/Series (DIPERBAIKI: Menampilkan Badge Movie / Series)
+// 1. Render Card Film/Series (Badge Movie / Series)
 function createMovieCard(item) {
     const isSeries = item.type === "series";
     const badgeText = isSeries ? "Series" : "Movie"; 
@@ -201,9 +221,10 @@ function createMovieCard(item) {
     `;
 }
 
-// Update Hero Banner
+// Update Hero Banner (OTOMATIS: Mengambil 5 film rating tertinggi)
 function updateHeroBanner(index) {
-    const featuredMovies = moviesData.slice(0, 5); 
+    const sorted = getSortedMovies();
+    const featuredMovies = sorted.slice(0, 5); // Mengambil 5 film teratas
     const movie = featuredMovies[index];
     if (!movie) return;
 
@@ -224,27 +245,32 @@ function updateHeroBanner(index) {
     }
 
     if (heroTitle) heroTitle.innerText = movie.title;
-    if (heroDesc) heroDesc.innerText = movie.synopsis;
+    if (heroDesc) heroDesc.innerText = movie.synopsis || "";
     if (heroGenre) heroGenre.innerText = movie.genre;
     if (heroBtn) heroBtn.onclick = () => openPlayer(movie.id);
 }
 
-// Auto Slide Hero Banner
+// Auto Slide Hero Banner (OTOMATIS: Berputar di 5 film rating tertinggi)
 function startHeroAutoSlide() {
     if (heroTimer) clearInterval(heroTimer);
 
     heroTimer = setInterval(() => {
-        const featuredMovies = moviesData.slice(0, 5);
+        const sorted = getSortedMovies();
+        const featuredMovies = sorted.slice(0, 5);
+        if (featuredMovies.length === 0) return;
+        
         currentHeroIndex = (currentHeroIndex + 1) % featuredMovies.length;
         updateHeroBanner(currentHeroIndex);
     }, 5000);
 }
 
-// 2. Render Home Trending
+// 2. Render Home Trending (OTOMATIS: Menampilkan seluruh film terurut rating)
 function renderHomeTrending() {
     const container = document.getElementById("home-trending-grid");
     if (!container) return;
-    container.innerHTML = moviesData.map(item => createMovieCard(item)).join("");
+    
+    const sortedMovies = getSortedMovies();
+    container.innerHTML = sortedMovies.map(item => createMovieCard(item)).join("");
 }
 
 // 3. Render Movies Grid
@@ -302,7 +328,8 @@ function filterByGenre(genreName) {
     const titleEl = document.getElementById("movies-title");
     if (titleEl) titleEl.innerText = `Kategori: ${genreName}`;
 
-    const filtered = moviesData.filter(item => {
+    const sorted = getSortedMovies();
+    const filtered = sorted.filter(item => {
         if (genreName.toLowerCase() === "series") {
             return item.type === "series" || item.genre.toLowerCase() === "series";
         }
@@ -316,16 +343,18 @@ function filterByGenre(genreName) {
 function resetMovieFilter() {
     const titleEl = document.getElementById("movies-title");
     if (titleEl) titleEl.innerText = "All Movies";
-    renderAllMovies(moviesData);
+    renderAllMovies(getSortedMovies());
 }
 
 function handleSearch(query) {
     const keyword = query.toLowerCase().trim();
+    const sorted = getSortedMovies();
+    
     if (!keyword) {
-        renderAllMovies(moviesData);
+        renderAllMovies(sorted);
         return;
     }
-    const filtered = moviesData.filter(item => 
+    const filtered = sorted.filter(item => 
         item.title.toLowerCase().includes(keyword) || 
         item.genre.toLowerCase().includes(keyword)
     );
@@ -334,7 +363,7 @@ function handleSearch(query) {
 }
 
 // ==========================================
-// MODAL & VIDEO PLAYER (DIPERBAIKI: MOVIE & SERIES BISA PAKAI EPISODES)
+// MODAL & VIDEO PLAYER
 // ==========================================
 function openPlayer(id) {
     const item = moviesData.find(m => m.id === id);
@@ -354,7 +383,6 @@ function openPlayer(id) {
     const epContainer = document.getElementById("episode-container");
     const epList = document.getElementById("episode-list");
 
-    // Sekarang mendukung array 'episodes' untuk SEMUA tipe (Movie & Series)
     if (item.episodes && item.episodes.length > 0) {
         if (iframe) iframe.src = item.episodes[0].url;
 
@@ -368,7 +396,6 @@ function openPlayer(id) {
 
         if (epContainer) epContainer.classList.remove("hidden");
     } else {
-        // Fallback jika tidak ada array episodes
         if (iframe) iframe.src = item.videoUrl || "";
         if (epContainer) epContainer.classList.add("hidden");
         if (epList) epList.innerHTML = "";
